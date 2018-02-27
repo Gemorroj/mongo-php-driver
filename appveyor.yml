@@ -1,0 +1,25 @@
+build: false
+clone_depth: 1
+
+install:
+    - mkdir c:\php-mongodb && cd c:\php-mongodb
+    - ps: Set-Service wuauserv -StartupType Manual
+    - cinst 7zip -y
+
+    - appveyor DownloadFile http://windows.php.net/downloads/releases/php-7.1.14-Win32-VC14-x64.zip
+    - 7z x php-7.1.14-Win32-VC14-x64.zip -y >nul
+    - cd ext
+    - appveyor DownloadFile http://windows.php.net/downloads/pecl/releases/mongodb/1.4.0/php_mongodb-1.4.0-7.1-ts-vc14-x64.zip
+    - 7z x php_mongodb-1.4.0-7.1-ts-vc14-x64.zip -y >nul
+
+    - cd ..
+
+    - copy /Y php.ini-development php.ini
+    - echo extension_dir=ext >> php.ini
+    - echo zend_extension=php_mongodb.dll >> php.ini
+
+test_script:
+    - cd c:\php-mongodb
+    - php.exe -v
+    - php.exe -m
+    - php.exe -i
