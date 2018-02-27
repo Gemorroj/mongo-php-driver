@@ -1,12 +1,13 @@
 build: false
 clone_depth: 1
+platform: x64
 
 install:
     - mkdir c:\php-mongodb && cd c:\php-mongodb
     - ps: Set-Service wuauserv -StartupType Manual
     - cinst 7zip -y
 
-    - appveyor DownloadFile http://windows.php.net/downloads/releases/php-7.1.14-Win32-VC14-x64.zip
+    - appveyor DownloadFile https://windows.php.net/downloads/releases/php-7.1.14-Win32-VC14-x64.zip
     - 7z x php-7.1.14-Win32-VC14-x64.zip -y >nul
     - cd ext
     - appveyor DownloadFile http://windows.php.net/downloads/pecl/releases/mongodb/1.4.0/php_mongodb-1.4.0-7.1-ts-vc14-x64.zip
