@@ -17,10 +17,10 @@ install:
 
     - copy /Y php.ini-development php.ini
     - echo extension_dir=ext >> php.ini
-    - echo zend_extension=php_mongodb.dll >> php.ini
+    - echo extension=php_mongodb.dll >> php.ini
 
 test_script:
     - cd c:\php-mongodb
-    - php.exe -v
+    #- php.exe -v
     - php.exe -m
-    - php.exe -i
+    #- php.exe -i
