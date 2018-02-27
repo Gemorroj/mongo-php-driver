@@ -8,6 +8,7 @@ install:
     - cinst 7zip -y
 
     - appveyor DownloadFile http://windows.php.net/downloads/releases/php-7.1.14-Win32-VC14-x64.zip
+    - gc php-7.1.14-Win32-VC14-x64.zip
     - 7z x php-7.1.14-Win32-VC14-x64.zip -y >nul
     - cd ext
     - appveyor DownloadFile http://windows.php.net/downloads/pecl/releases/mongodb/1.4.0/php_mongodb-1.4.0-7.1-ts-vc14-x64.zip
